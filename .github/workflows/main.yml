@@ -1,0 +1,10 @@
+name: python-lint
+on: # workflow triggers
+  repository_dispatch:
+    types: [mlflow_model_tag] # payload event from webhook call
+jobs:
+  lint: # job name
+    runs-on: ubuntu-latest
+    steps:
+      - uses = lgeiger/black-action@master
+      - args = ". --check"
