@@ -4,8 +4,10 @@ on: # workflow triggers
     types:
       - mlflow_model_tag # payload event from webhook call
 jobs:
-  lint: # job name
+  lint-code: # job name
     runs-on: ubuntu-latest
     steps:
-      - uses: lgeiger/black-action@master
-      - args: ". --check"
+      - name: black-linter
+        uses: lgeiger/black-action@master
+        with:
+          args: ". --check"
